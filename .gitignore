@@ -7,9 +7,11 @@
 *.dll
 *.so
 *.dylib
+.DS_Store
 
 # Test binary, built with `go test -c`
 *.test
+__debug_bin*.*
 
 # Code coverage profiles and other test artifacts
 *.out
@@ -30,3 +32,9 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# env file
+.env.secrets
+
+# Airflow workspace
+tmp/
