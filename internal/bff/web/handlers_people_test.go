@@ -12,6 +12,7 @@ import (
 	"github.com/gofiber/fiber/v3"
 
 	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/bff/clients"
+	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/utils"
 )
 
 var update = flag.Bool("update", false, "update golden files")
@@ -42,7 +43,8 @@ func newBFFAppForTest(t *testing.T) *fiber.App {
 	t.Helper()
 
 	// Parse templates from disk (same as runtime)
-	r, err := NewRenderer("internal/bff/views/*.html")
+	projectRoot, err := utils.FindProjectRoot()
+	r, err := NewRenderer(filepath.Join(projectRoot, "internal/bff/views/*.html"))
 	if err != nil {
 		t.Fatal(err)
 	}

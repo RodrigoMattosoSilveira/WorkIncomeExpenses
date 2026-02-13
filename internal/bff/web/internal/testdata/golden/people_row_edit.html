@@ -1,0 +1,43 @@
+
+<tr id="person-1"
+    _="
+      on keydown[key is 'Escape']
+        halt the event
+        call htmx.ajax('GET', '/people/1/row', {target:'#person-1', swap:'outerHTML'})
+      end
+      on click from document
+        if event.target.closest('#person-1') is null
+          call htmx.ajax('GET', '/people/1/row', {target:'#person-1', swap:'outerHTML'})
+        end
+      end
+    "
+>
+  <td colspan="3">
+    <form
+      hx-patch="/people/1"
+      hx-target="#person-1"
+      hx-swap="outerHTML">
+      <div style="display:flex;gap:8px;align-items:flex-start">
+        <div style="flex:1">
+          <label>Name</label><br>
+          <input name="name" value="Ada" style="width:100%">
+          
+        </div>
+        <div style="flex:1">
+          <label>Email</label><br>
+          <input name="email" value="ada@example.com" style="width:100%">
+          
+        </div>
+        <div style="white-space:nowrap;margin-top:20px">
+          <button type="submit">Save</button>
+          <button type="button"
+                  hx-get="/people/1/row"
+                  hx-target="#person-1"
+                  hx-swap="outerHTML">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </td>
+</tr>
