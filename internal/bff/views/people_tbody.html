@@ -1,0 +1,7 @@
+{{ define "people_tbody" }}
+{{ range .People }}
+  {{ template "people_row" . }}
+{{ else }}
+  <tr><td colspan="3"><em>No people yet</em></td></tr>
+{{ end }}
+{{ end }}

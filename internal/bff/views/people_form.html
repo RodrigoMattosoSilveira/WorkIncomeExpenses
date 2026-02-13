@@ -1,0 +1,22 @@
+{{ define "people_form" }}
+<form hx-post="/people"
+      hx-target="#people-tbody"
+      hx-swap="afterbegin">
+  <h3>New Person</h3>
+  <div style="display:flex;gap:8px">
+    <div style="flex:1">
+      <label>Name</label><br>
+      <input name="name" value="{{ .Person.Name }}" style="width:100%">
+      {{ with index .Errors "name" }}<div style="color:red">{{ . }}</div>{{ end }}
+    </div>
+    <div style="flex:1">
+      <label>Email</label><br>
+      <input name="email" value="{{ .Person.Email }}" style="width:100%">
+      {{ with index .Errors "email" }}<div style="color:red">{{ . }}</div>{{ end }}
+    </div>
+  </div>
+  <div style="margin-top:8px">
+    <button type="submit">Create</button>
+  </div>
+</form>
+{{ end }}

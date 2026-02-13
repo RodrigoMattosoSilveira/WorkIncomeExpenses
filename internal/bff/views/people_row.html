@@ -1,0 +1,19 @@
+{{ define "people_row" }}
+<tr id="person-{{ .ID }}">
+  <td>{{ .Name }}</td>
+  <td>{{ .Email }}</td>
+  <td style="text-align:right">
+    <button hx-get="/people/{{ .ID }}/edit"
+            hx-target="#person-{{ .ID }}"
+            hx-swap="outerHTML">
+      Edit
+    </button>
+    <button hx-delete="/people/{{ .ID }}"
+            hx-target="#person-{{ .ID }}"
+            hx-swap="outerHTML"
+            hx-confirm="Delete this person?">
+      Delete
+    </button>
+  </td>
+</tr>
+{{ end }}
