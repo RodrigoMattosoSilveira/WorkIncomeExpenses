@@ -1,5 +1,17 @@
 {{ define "people_row_edit" }}
-<tr id="person-{{ .Person.ID }}">
+<tr id="person-{{ .Person.ID }}"
+    _="
+      on keydown[key is 'Escape']
+        halt the event
+        call htmx.ajax('GET', '/people/{{ .Person.ID }}/row', {target:'#person-{{ .Person.ID }}', swap:'outerHTML'})
+      end
+      on click from document
+        if event.target.closest('#person-{{ .Person.ID }}') is null
+          call htmx.ajax('GET', '/people/{{ .Person.ID }}/row', {target:'#person-{{ .Person.ID }}', swap:'outerHTML'})
+        end
+      end
+    "
+>
   <td colspan="3">
     <form
       hx-patch="/people/{{ .Person.ID }}"
@@ -19,9 +31,9 @@
         <div style="white-space:nowrap;margin-top:20px">
           <button type="submit">Save</button>
           <button type="button"
-                  hx-get="/people"
-                  hx-target="#people-tbody"
-                  hx-swap="innerHTML">
+                  hx-get="/people/{{ .Person.ID }}/row"
+                  hx-target="#person-{{ .Person.ID }}"
+                  hx-swap="outerHTML">
             Cancel
           </button>
         </div>

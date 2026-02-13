@@ -25,13 +25,13 @@ run: build
 
 ## Run all tests
 test:
-	@echo "▶ Running tests..."
+	@echo "▶ Running tests..., show only PASS/FAIL"
 	go test -v ./... | grep -E 'PASS|FAIL' | tr -d ' '
 
 # Run all tests & build golden files
 test_g:
-	@echo "▶ Running tests..."
-	UPDATE_GOLDEN_FILES=true go test -v ./... | grep -E 'PASS|FAIL' | tr -d ' '
+	@echo "▶ Running tests..., update golden files"
+	go test -v ./... -update | grep -E 'PASS|FAIL' | tr -d ' '
 
 # Run all tests, show only failed
 test_f:
