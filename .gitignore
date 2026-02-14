@@ -38,4 +38,5 @@ go.work.sum
 
 # Airflow workspace
 tmp/
+bin/
 air.log
