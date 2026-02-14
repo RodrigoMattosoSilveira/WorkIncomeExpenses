@@ -1,6 +1,17 @@
 # Introduction
 Build a `server-rendered HTMX` app as a `BFF`, keep `domain CRUD` behind `JSON/gRPC` services.
 
+```bash
+BFF Web Handlers (Adapters)
+        ↓
+PeopleAPI (Port)
+        ↓
+HTTP PeopleClient (Adapter)
+        ↓
+people-svc
+
+```
+
 ### Use a “UI/BFF” service as the HTMX + template server
 One service renders all HTML (full pages + partials). It talks to backend services over HTTP.
 Why this is the best fit:
