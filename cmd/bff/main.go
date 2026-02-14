@@ -2,21 +2,26 @@ package main
 
 import (
 	"log"
+	"path/filepath"
 	"time"
 
 	"github.com/gofiber/fiber/v3"
 
 	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/clients"
 	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/web"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/utils"
 )
 
 func main() {
 	app := fiber.New()
 
-	renderer, err := web.NewRenderer("internal/bff/views/*.html")
+	projectRoot, err := utils.FindProjectRoot()
+	renderer, err := web.NewRenderer(filepath.Join(projectRoot, "internal/bff/views/*.html"))
 	if err != nil {
 		log.Fatal(err)
 	}
+	home := web.NewHomeHandlers(renderer)
+	app.Get("/", home.Home)
 
 	peopleClient := clients.NewPeopleClient(clients.PeopleClientConfig{
 		BaseURL: "http://localhost:8081", // people-svc

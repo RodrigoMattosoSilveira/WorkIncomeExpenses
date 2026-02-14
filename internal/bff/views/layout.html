@@ -7,9 +7,14 @@
 			<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 
 		</head>
-		<body>
+			<body>
+			<nav style="margin-bottom:16px;">
+				<a href="/">Home</a> |
+				<a href="/people">People</a>
+			</nav>
+
 			<main style="max-width:900px;margin:0 auto;padding:16px">
-			{{ template "content" . }}
+				{{ template "content" . }}
 			</main>
 		</body>
 	</html>
