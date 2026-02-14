@@ -1,0 +1,27 @@
+{{ define "content" }}
+<h1>People</h1>
+
+<div id="flash">{{ .Flash }}</div>
+
+<button
+  hx-get="/people/new"
+  hx-target="#panel"
+  hx-swap="innerHTML">
+  New Person
+</button>
+
+<div id="panel" style="margin-top:12px"></div>
+
+<table width="100%" style="margin-top:12px">
+  <thead>
+    <tr><th>Name</th><th>Email</th><th></th></tr>
+  </thead>
+  <tbody id="people-tbody"
+        hx-get="/people"
+        hx-trigger="load"
+        hx-target="#people-tbody"
+        hx-swap="innerHTML">
+    <!-- tbody fragment will load -->
+  </tbody>
+</table>
+{{ end }}

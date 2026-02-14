@@ -1,0 +1,44 @@
+{{ define "people_row_edit" }}
+<tr id="person-{{ .Person.ID }}"
+    _="
+      on keydown[key is 'Escape']
+        halt the event
+        call htmx.ajax('GET', '/people/{{ .Person.ID }}/row', {target:'#person-{{ .Person.ID }}', swap:'outerHTML'})
+      end
+      on click from document
+        if event.target.closest('#person-{{ .Person.ID }}') is null
+          call htmx.ajax('GET', '/people/{{ .Person.ID }}/row', {target:'#person-{{ .Person.ID }}', swap:'outerHTML'})
+        end
+      end
+    "
+>
+  <td colspan="3">
+    <form
+      hx-patch="/people/{{ .Person.ID }}"
+      hx-target="#person-{{ .Person.ID }}"
+      hx-swap="outerHTML">
+      <div style="display:flex;gap:8px;align-items:flex-start">
+        <div style="flex:1">
+          <label>Name</label><br>
+          <input name="name" value="{{ .Person.Name }}" style="width:100%">
+          {{ with index .Errors "name" }}<div style="color:red">{{ . }}</div>{{ end }}
+        </div>
+        <div style="flex:1">
+          <label>Email</label><br>
+          <input name="email" value="{{ .Person.Email }}" style="width:100%">
+          {{ with index .Errors "email" }}<div style="color:red">{{ . }}</div>{{ end }}
+        </div>
+        <div style="white-space:nowrap;margin-top:20px">
+          <button type="submit">Save</button>
+          <button type="button"
+                  hx-get="/people/{{ .Person.ID }}/row"
+                  hx-target="#person-{{ .Person.ID }}"
+                  hx-swap="outerHTML">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </td>
+</tr>
+{{ end }}

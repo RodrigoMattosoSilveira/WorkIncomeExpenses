@@ -1,0 +1,22 @@
+
+
+  
+<tr id="person-1">
+  <td>Ada</td>
+  <td>ada@example.com</td>
+  <td style="text-align:right">
+    <button hx-get="/people/1/edit"
+            hx-target="#person-1"
+            hx-swap="outerHTML">
+      Edit
+    </button>
+    <button hx-delete="/people/1"
+            hx-target="#person-1"
+            hx-swap="outerHTML"
+            hx-confirm="Delete this person?">
+      Delete
+    </button>
+  </td>
+</tr>
+
+
