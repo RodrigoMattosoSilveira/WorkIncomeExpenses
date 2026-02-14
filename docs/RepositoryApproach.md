@@ -2,7 +2,7 @@
 In microservices architecture, applications are split into small, independently deployable services. A critical decision is how to structure the code repositories — typically between a `monorepo` or `multirepo` approach.
 
 # Decision
-This is a relatively small ERP and I decided to use `monorepo` due to it tight integration, shared dependencies, and centralized control. 
+I opted for a `monorepo` due to the relatively small ERP, its tight integration, shared dependencies, and centralized control.
 
 See below for a detailed analysis.
 
