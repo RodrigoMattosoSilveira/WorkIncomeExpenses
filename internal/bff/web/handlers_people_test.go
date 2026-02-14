@@ -11,8 +11,8 @@ import (
 
 	"github.com/gofiber/fiber/v3"
 
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/bff/clients"
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/utils"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/clients"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/utils"
 )
 
 var update = flag.Bool("update", false, "update golden files")

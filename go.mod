@@ -1,4 +1,4 @@
-module github.com/RodrigoMattosoSilveira/WorkEarningsExpenses
+module github.com/RodrigoMattosoSilveira/WorkIncomeExpenses
 
 go 1.26.0
 

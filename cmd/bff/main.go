@@ -6,8 +6,8 @@ import (
 
 	"github.com/gofiber/fiber/v3"
 
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/bff/clients"
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/bff/web"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/clients"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/web"
 )
 
 func main() {

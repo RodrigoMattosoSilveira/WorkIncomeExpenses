@@ -3,8 +3,8 @@ package web
 import (
 	"strconv"
 
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/bff/clients"
 	"github.com/gofiber/fiber/v3"
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/bff/clients"
 )
 
 type PeopleHandlers struct {
@@ -14,7 +14,7 @@ type PeopleHandlers struct {
 
 func NewPeopleHandlers(r *Renderer, pc clients.PeopleAPI) *PeopleHandlers {
 	return &PeopleHandlers{
-		r: r, 
+		r:  r,
 		pc: pc,
 	}
 }

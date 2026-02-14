@@ -7,7 +7,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 
-	"github.com/RodrigoMattosoSilveira/WorkEarningsExpenses/internal/people"
+	"github.com/RodrigoMattosoSilveira/WorkIncomeExpenses/internal/people"
 )
 
 func main() {

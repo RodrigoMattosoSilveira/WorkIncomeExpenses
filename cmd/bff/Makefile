@@ -4,7 +4,7 @@ BIN_DIR  := ../../bin
 BIN      := $(BIN_DIR)/$(APP_NAME)
 
 # Docker
-IMAGE    := yourorg/$(APP_NAME)
+IMAGE    := github//$(APP_NAME)
 TAG      ?= dev
 
 # Runtime config
