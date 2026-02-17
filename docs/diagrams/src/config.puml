@@ -1,11 +1,11 @@
 @startuml
-alt svcEnv 
+autonumber
 
-service -[#red]> os: os.Getenv(key)
-os --> service: svcEnv
+main -[#red]>o os: os.Getenv(key)
+os -->o main: svcEnv
 
 service -[#red]> wiecfg: GetSvcParms(svc)
-wiecfg --> service: svcParms
+wiecfg -->o service: svcParms
 
 service -[#red]> wiecfg: GetSvcEnvParms(svc,  svcEnv)
 wiecfg --> service: svcEnvParms
@@ -13,9 +13,9 @@ wiecfg --> service: svcEnvParms
 service -[#red]> wiecfg: GetSvcEnvCredentials(svc,  svcEnv)
 wiecfg --> service: svcCredentials
 
-service -[#blue]> config: config.GetSvcLocalParms(svc,  svcEnv)
-config --> service: svcEnvLocalParms
+main -[#blue]> config: config.GetSvcLocalParms(svc,  svcEnv)
+config --> main: svcEnvLocalParms
 
-service -[#blue]> config: config.IntegrateParmsCredentials(parms,  envParms, svcEnvLocalParms, svcCredentials)
-config --> service: svcParmsCreds
+main -[#blue]> config: config.IntegrateParmsCredentials(parms,  envParms, svcEnvLocalParms, svcCredentials)
+config --> main: svcParmsCreds
 @enduml

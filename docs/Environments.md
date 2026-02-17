@@ -96,4 +96,19 @@ The table below depicts the order of loading these files:
 - Integrate, `svcParms`, `svcEnvParms`, `svcLocalParms`, and `svcCredentials` into the service's configuration;
 
 # Sequence Diagram
+The steps that each microservice takes to set up its configuration parameters and credentials:
 ![Configuration](./diagrams/out/configuration.png "Configuration")
+
+Notes:
+- `wiecfg`
+  - Is the configuration service, available for all services;
+  - The calls to `wiecfg` handlers are HTTP/GET interservice calls;
+  - The arguments on all `wiecfg` calls are `query strings`;
+  - The `response` object returned by `wiecfg` handlers contains `encoded JSON`;
+  -  The caller to `wiecfg` decodes the response into a `map[string]string`;
+- `config`
+  - is configuration package, found on all services; 
+    - `TODO` integrate it into a module imported by all services;
+  - The calls to `config` are local function calls;
+  - The arguments to `config.IntegrateParmsCredentials` are `map[string]string`;
+  - The value returned by `config.IntegrateParmsCredentials` is a `map[string]string`;
