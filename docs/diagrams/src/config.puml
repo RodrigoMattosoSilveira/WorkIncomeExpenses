@@ -1,0 +1,21 @@
+@startuml
+alt svcEnv 
+
+service -[#red]> os: os.Getenv(key)
+os --> service: svcEnv
+
+service -[#red]> wiecfg: GetSvcParms(svc)
+wiecfg --> service: svcParms
+
+service -[#red]> wiecfg: GetSvcEnvParms(svc,  svcEnv)
+wiecfg --> service: svcEnvParms
+
+service -[#red]> wiecfg: GetSvcEnvCredentials(svc,  svcEnv)
+wiecfg --> service: svcCredentials
+
+service -[#blue]> config: config.GetSvcLocalParms(svc,  svcEnv)
+config --> service: svcEnvLocalParms
+
+service -[#blue]> config: config.IntegrateParmsCredentials(parms,  envParms, svcEnvLocalParms, svcCredentials)
+config --> service: svcParmsCreds
+@enduml
